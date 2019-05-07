@@ -3,11 +3,7 @@ import java.awt.event.*;
 import java.net.URL;
 import java.util.Random;
 import javax.swing.*;
-
-
-import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-
 import java.applet.*;
 
 
@@ -28,47 +24,34 @@ public class home extends JPanel implements ActionListener, MouseListener {
 	private int Y  , P ;
 	private Timer time;
 	private AudioClip A1 , A2 , A4 , A5;
+	private int pit = 0 ;
 
-	public static void main(String[] args) {	
-		Hangman g = new Hangman();
-		home C = new home();	
-		g.add(C);
-		
-		g.setTitle("Hungman");
 
-		g.setSize(520,543);
-		g.setResizable(false);
-		g.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		g.setLocation(350,100);
-		g.setVisible(true);
-		
-	}
-	
-	public home(){
+	public home( ){
 		URL url1 =getClass().getResource("/pic/1.wav");
  		URL url2 =getClass().getResource("/pic/2.wav");
  		URL url3 =getClass().getResource("/pic/3.wav");
  		URL url4 =getClass().getResource("/pic/4.wav");
  		URL url5 =getClass().getResource("/pic/5.wav");
- 	
- 		A1 = Applet.newAudioClip(url1); 
- 		A2 = Applet.newAudioClip(url2); 
- 		A4 = Applet.newAudioClip(url4); 
- 		A5 = Applet.newAudioClip(url5); 
- 		
-		
-		bg = new ImageIcon(getClass().getResource(("/pic/1.png")));
-		bg1 = new ImageIcon(getClass().getResource(("/pic/15.png")));
-		start = new ImageIcon(getClass().getResource(("/pic/9.gif")));
-		head = new ImageIcon(getClass().getResource(("/pic/16.png")));
-		 addMouseListener(this);
+
+ 		A1 = Applet.newAudioClip(url1);
+ 		A2 = Applet.newAudioClip(url2);
+ 		A4 = Applet.newAudioClip(url4);
+ 		A5 = Applet.newAudioClip(url5);
+
+
+			bg = new ImageIcon(getClass().getResource(("/pic/1.png")));
+			bg1 = new ImageIcon(getClass().getResource(("/pic/15.png")));
+			start = new ImageIcon(getClass().getResource(("/pic/9.gif")));
+			head = new ImageIcon(getClass().getResource(("/pic/16.png")));
+			 addMouseListener(this);
 			font = new Font("Monospaced" , 20 , 20);
 			font1 = new Font("Monospaced",Font.BOLD, 32 );
 			setFont(font);
-			
+
 			setBorder(new EmptyBorder(80,10,10,10));
 			setBackground(Color.decode("#EEAEEE"));
-			
+
 			a = new JButton("A");
 			a.setEnabled(false);
 			a.setPreferredSize(new Dimension(40	, 40));
@@ -78,7 +61,7 @@ public class home extends JPanel implements ActionListener, MouseListener {
 			a.setBorder(BorderFactory.createBevelBorder(1,Color.BLACK,Color.white));
 			a.addActionListener(this);
 			add(a);
-			
+
 			b = new JButton("B");
 			b.setEnabled(false);
 			b.setPreferredSize(new Dimension(40	, 40));
@@ -88,7 +71,7 @@ public class home extends JPanel implements ActionListener, MouseListener {
 			b.setBorder(BorderFactory.createBevelBorder(1,Color.BLACK,Color.white));
 			b.addActionListener(this);
 			add(b);
-			
+
 			c = new JButton("C");
 			c.setEnabled(false);
 			c.setPreferredSize(new Dimension(40	, 40));
@@ -98,7 +81,7 @@ public class home extends JPanel implements ActionListener, MouseListener {
 			c.setBorder(BorderFactory.createBevelBorder(1,Color.BLACK,Color.white));
 			c.addActionListener(this);
 			add(c);
-			
+
 			d = new JButton("D");
 			d.setEnabled(false);
 			d.setPreferredSize(new Dimension(40	, 40));
@@ -108,8 +91,8 @@ public class home extends JPanel implements ActionListener, MouseListener {
 			d.setBorder(BorderFactory.createBevelBorder(1,Color.BLACK,Color.white));
 			d.addActionListener(this);
 			add(d);
-			
-			
+
+
 			E = new JButton("E");
 			E.setEnabled(false);
 			E.setPreferredSize(new Dimension(40	, 40));
@@ -119,8 +102,8 @@ public class home extends JPanel implements ActionListener, MouseListener {
 			E.setBorder(BorderFactory.createBevelBorder(1,Color.BLACK,Color.white));
 			E.addActionListener(this);
 			add(E);
-			
-			
+
+
 			f = new JButton("F");
 			f.setEnabled(false);
 			f.setPreferredSize(new Dimension(40	, 40));
@@ -130,8 +113,8 @@ public class home extends JPanel implements ActionListener, MouseListener {
 			f.setBorder(BorderFactory.createBevelBorder(1,Color.BLACK,Color.white));
 			f.addActionListener(this);
 			add(f);
-			
-			
+
+
 			G = new JButton("G");
 			G.setEnabled(false);
 			G.setPreferredSize(new Dimension(40	, 40));
@@ -141,8 +124,8 @@ public class home extends JPanel implements ActionListener, MouseListener {
 			G.setBorder(BorderFactory.createBevelBorder(1,Color.BLACK,Color.white));
 			G.addActionListener(this);
 			add(G);
-			
-			
+
+
 			h = new JButton("H");
 			h.setEnabled(false);
 			h.setPreferredSize(new Dimension(40	, 40));
@@ -152,7 +135,7 @@ public class home extends JPanel implements ActionListener, MouseListener {
 			h.setBorder(BorderFactory.createBevelBorder(1,Color.BLACK,Color.white));
 			h.addActionListener(this);
 			add(h);
-			
+
 			i = new JButton("I");
 			i.setEnabled(false);
 			i.setPreferredSize(new Dimension(40	, 40));
@@ -162,7 +145,7 @@ public class home extends JPanel implements ActionListener, MouseListener {
 			i.setBorder(BorderFactory.createBevelBorder(1,Color.BLACK,Color.white));
 			i.addActionListener(this);
 			add(i);
-			
+
 			j = new JButton("J");
 			j.setEnabled(false);
 			j.setPreferredSize(new Dimension(40	, 40));
@@ -172,7 +155,7 @@ public class home extends JPanel implements ActionListener, MouseListener {
 			j.setBorder(BorderFactory.createBevelBorder(1,Color.BLACK,Color.white));
 			j.addActionListener(this);
 			add(j);
-			
+
 			k = new JButton("K");
 			k.setEnabled(false);
 			k.setPreferredSize(new Dimension(40	, 40));
@@ -182,7 +165,7 @@ public class home extends JPanel implements ActionListener, MouseListener {
 			k.setBorder(BorderFactory.createBevelBorder(1,Color.BLACK,Color.white));
 			k.addActionListener(this);
 			add(k);
-			
+
 			l = new JButton("L");
 			l.setEnabled(false);
 			l.setPreferredSize(new Dimension(40	, 40));
@@ -192,7 +175,7 @@ public class home extends JPanel implements ActionListener, MouseListener {
 			l.setBorder(BorderFactory.createBevelBorder(1,Color.BLACK,Color.white));
 			l.addActionListener(this);
 			add(l);
-			
+
 			m = new JButton("M");
 			m.setEnabled(false);
 			m.setPreferredSize(new Dimension(40	, 40));
@@ -202,7 +185,7 @@ public class home extends JPanel implements ActionListener, MouseListener {
 			m.setBorder(BorderFactory.createBevelBorder(1,Color.BLACK,Color.white));
 			m.addActionListener(this);
 			add(m);
-			
+
 			n = new JButton("N");
 			n.setEnabled(false);
 			n.setPreferredSize(new Dimension(40	, 40));
@@ -212,7 +195,7 @@ public class home extends JPanel implements ActionListener, MouseListener {
 			n.setBorder(BorderFactory.createBevelBorder(1,Color.BLACK,Color.white));
 			n.addActionListener(this);
 			add(n);
-			
+
 			o = new JButton("O");
 			o.setEnabled(false);
 			o.setPreferredSize(new Dimension(40	, 40));
@@ -222,7 +205,7 @@ public class home extends JPanel implements ActionListener, MouseListener {
 			o.setBorder(BorderFactory.createBevelBorder(1,Color.BLACK,Color.white));
 			o.addActionListener(this);
 			add(o);
-			
+
 			p = new JButton("P");
 			p.setEnabled(false);
 			p.setPreferredSize(new Dimension(40	, 40));
@@ -242,7 +225,7 @@ public class home extends JPanel implements ActionListener, MouseListener {
 			q.setBorder(BorderFactory.createBevelBorder(1,Color.BLACK,Color.white));
 			q.addActionListener(this);
 			add(q);
-			
+
 			r = new JButton("R");
 			r.setEnabled(false);
 			r.setPreferredSize(new Dimension(40	, 40));
@@ -252,7 +235,7 @@ public class home extends JPanel implements ActionListener, MouseListener {
 			r.setBorder(BorderFactory.createBevelBorder(1,Color.BLACK,Color.white));
 			r.addActionListener(this);
 			add(r);
-			
+
 			s = new JButton("S");
 			s.setEnabled(false);
 			s.setPreferredSize(new Dimension(40	, 40));
@@ -262,7 +245,7 @@ public class home extends JPanel implements ActionListener, MouseListener {
 			s.setBorder(BorderFactory.createBevelBorder(1,Color.BLACK,Color.white));
 			s.addActionListener(this);
 			add(s);
-			
+
 			t = new JButton("T");
 			t.setEnabled(false);
 			t.setPreferredSize(new Dimension(40	, 40));
@@ -272,7 +255,7 @@ public class home extends JPanel implements ActionListener, MouseListener {
 			t.setBorder(BorderFactory.createBevelBorder(1,Color.BLACK,Color.white));
 			t.addActionListener(this);
 			add(t);
-			
+
 			play = new JButton("PLAY");
 			play.setEnabled(false);
 			play.setPreferredSize(new Dimension(82 , 40));
@@ -283,7 +266,7 @@ public class home extends JPanel implements ActionListener, MouseListener {
 			play.addActionListener(this);
 			play.setEnabled(true);
 			add(play);
-			
+
 			u = new JButton("U");
 			u.setEnabled(false);
 			u.setPreferredSize(new Dimension(40	, 40));
@@ -293,7 +276,7 @@ public class home extends JPanel implements ActionListener, MouseListener {
 			u.setBorder(BorderFactory.createBevelBorder(1,Color.BLACK,Color.white));
 			u.addActionListener(this);
 			add(u);
-			
+
 			v = new JButton("V");
 			v.setEnabled(false);
 			v.setPreferredSize(new Dimension(40	, 40));
@@ -303,7 +286,7 @@ public class home extends JPanel implements ActionListener, MouseListener {
 			v.setBorder(BorderFactory.createBevelBorder(1,Color.BLACK,Color.white));
 			v.addActionListener(this);
 			add(v);
-			
+
 			w = new JButton("w");
 			w.setEnabled(false);
 			w.setPreferredSize(new Dimension(40	, 40));
@@ -313,7 +296,7 @@ public class home extends JPanel implements ActionListener, MouseListener {
 			w.setBorder(BorderFactory.createBevelBorder(1,Color.BLACK,Color.white));
 			w.addActionListener(this);
 			add(w);
-			
+
 			x = new JButton("X");
 			x.setEnabled(false);
 			x.setPreferredSize(new Dimension(40	, 40));
@@ -323,7 +306,7 @@ public class home extends JPanel implements ActionListener, MouseListener {
 			x.setBorder(BorderFactory.createBevelBorder(1,Color.BLACK,Color.white));
 			x.addActionListener(this);
 			add(x);
-			
+
 			y = new JButton("Y");
 			y.setEnabled(false);
 			y.setPreferredSize(new Dimension(40	, 40));
@@ -333,7 +316,7 @@ public class home extends JPanel implements ActionListener, MouseListener {
 			y.setBorder(BorderFactory.createBevelBorder(1,Color.BLACK,Color.white));
 			y.addActionListener(this);
 			add(y);
-			
+
 			z = new JButton("Z");
 			z.setEnabled(false);
 			z.setPreferredSize(new Dimension(40	, 40));
@@ -343,7 +326,7 @@ public class home extends JPanel implements ActionListener, MouseListener {
 			z.setBorder(BorderFactory.createBevelBorder(1,Color.BLACK,Color.white));
 			z.addActionListener(this);
 			add(z);
-			
+
 			restart = new JButton("RESTART");
 			restart.setEnabled(false);
 			restart.setPreferredSize(new Dimension(90, 40));
@@ -353,19 +336,17 @@ public class home extends JPanel implements ActionListener, MouseListener {
 			restart.setBorder(BorderFactory.createBevelBorder(1,Color.BLACK,Color.white));
 			restart.addActionListener(this);
 			add(restart);
-			
-			
 			//P = 1 ;
 			Y = 120 ;
 			P = 1 ;
 			time = new Timer(2000 , this);
-			
+
 			initGame();
 			//setPreferredSize(new Dimension(300 , 300));
 	}
 	public void initGame(){
 		errors = 0;
-		//Icon b = new ImageIcon(getClass().getResource("C:/Users/10.10Desktop\Hungman\src\pic")); 
+		//Icon b = new ImageIcon(getClass().getResource("C:/Users/10.10Desktop\Hungman\src\pic"));
 		m1 = new ImageIcon(getClass().getResource(("/pic/19.png")));
 		m2 = new ImageIcon(getClass().getResource(("/pic/20.png")));
 		m3 = new ImageIcon(getClass().getResource(("/pic/21.png")));
@@ -379,15 +360,16 @@ public class home extends JPanel implements ActionListener, MouseListener {
 		m11 = new ImageIcon(getClass().getResource(("/pic/23.png")));
 		m12 = new ImageIcon(getClass().getResource(("/pic/24.png")));
 		m13 = new ImageIcon(getClass().getResource(("/pic/25.png")));
-		
-		
+
+
 		String str = "Twilight|Batman|Titanic|Harry Potter|Frozen|	Minions|Skyfall|	Zootopia|Jurassic World|Black Panther|	Avatar|Aquaman|Intolerance|Cleopatra|Mickey|Wings|Cavalcade|Bambi |	Cinderella|Psycho         ";
+		//String str ="amonuwado";
 		String[] temp;
-		
+
 		String delimiter = "\\|";
 		temp = str.split(delimiter);
 		Random random = new Random();
-	
+
 		int randomInt = random.nextInt(temp.length);
 		word = new String(temp[randomInt]);
 		char positions[] = new char[word.length()];
@@ -397,7 +379,7 @@ public class home extends JPanel implements ActionListener, MouseListener {
 		}
 		String s = new String(positions);
 		word1 = new StringBuffer(s);
-		
+
 		//Delete the message
 		//System.out.print(word);
 		repaint();
@@ -405,11 +387,11 @@ public class home extends JPanel implements ActionListener, MouseListener {
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		//Draw the hungman
-		
+
 	font2 = new Font("Monospaced",Font.BOLD, 34 );
 		setFont(font2);
 		g.setFont(font2);
-     
+
        if (errors >  0){// bar up
     	   m7.paintIcon(this, g, 15, 120);
 		   m9.paintIcon(this, g, 18, 120);
@@ -433,26 +415,26 @@ public class home extends JPanel implements ActionListener, MouseListener {
     	   m4.paintIcon(this, g, 18, Y);
        }
        if(errors > 6){
-    	   
+
     	   Y += P;
     	  if(Y > 140){
     		  	Y = 140;
   				P = +P;
-    	  }else if(Y<120){	
+    	  }else if(Y<120){
   			Y = 120;
   			P = -P;
   		}
     	   time.start();
     	   m4.getImage();
-    	   time.stop(); 
+    	   time.stop();
     	   m11.paintIcon(this, g, 18, 190);
     	   m12.paintIcon(this, g, 24, Y);
     	   m13.paintIcon(this, g, 32, Y);
-    	  
+
        }
        //Y = 120;
        g.drawString(new String (word1) , 220 , 350);
-       
+
 	}
 	public void paint(Graphics g){
 		super.paint(g);
@@ -465,9 +447,9 @@ public class home extends JPanel implements ActionListener, MouseListener {
 		}
 		else{
 			head.paintIcon(this, g, 10, 5);
-			
+
 		}
-		
+
 	}
 	public void actionPerformed(ActionEvent e){
 		if(e.getSource() == a){
@@ -666,13 +648,13 @@ public class home extends JPanel implements ActionListener, MouseListener {
 	private void processTurn(){
 		String  T;
 		char A ;
-		
 		//s = Data;
 		A = Data;
 		if(word.indexOf(A) == -1){
 			message = "";
 			errors++;
 			if(errors == DEAD){
+		set(-1);
 				A1.play();
 				information = "Click on restart";
 				JOptionPane.showMessageDialog(null, "YOU LOST -_- !!!\nClick on restart \n Answer : " + word);
@@ -703,21 +685,24 @@ public class home extends JPanel implements ActionListener, MouseListener {
 				y.setEnabled(false);
 				z.setEnabled(false);
 				play.setEnabled(false);
+
 			}
 			return;
 		}
-		
+
 		for(int i = 0 ; i < word.length() ; i++){
 			if(word.charAt(i) == A){
 				A4.play();
 				word1.setCharAt(i, A);
-				
+
 			}
 		}
-		
+
 		T = new String(word1);
-		
+
 		if(T.indexOf('.') == -1){
+
+			set(1);
 			A2.play();
 			JOptionPane.showMessageDialog(null, "YOU WIN ^_^");
 			a.setEnabled(false);
@@ -749,7 +734,7 @@ public class home extends JPanel implements ActionListener, MouseListener {
 			play.setEnabled(false);
 			return;
 		}
-	
+
 		//Delete message
 		repaint();
 	}
@@ -761,19 +746,20 @@ public class home extends JPanel implements ActionListener, MouseListener {
 			}
 		}
 		else if(page == 2){
-			
+
 			if(event.getX() >= 270 && event.getY() >= 210 && event.getX() <= 405 && event.getY() <= 345 ){
 				page = 3;
 				repaint();
 			}
-	
+
 		}
 	}
-	
+
 	public void mouseEntered(MouseEvent event) {}
 	public void mouseExited(MouseEvent event) {}
 	public void mouseReleased(MouseEvent event) {}
 	public void mouseClicked(MouseEvent event) {}
+	public void  set(int pit ){ pit= pit ; }
+	public int  get( ){ return pit ;}
 
-	
 }
